@@ -28,6 +28,9 @@ inputs:
   commit_msg:
     description: 'The commit message'
     required: false
+  auth_token:
+    description: 'Github auth_token'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -40,6 +43,7 @@ runs:
     - ${{ inputs.user-email }}
     - ${{ inputs.destination-branch }}
     - ${{ inputs.commit_msg }}
+    - ${{ inputs.auth_token }}
 branding:
   icon: 'git-commit'
   color: 'green'
