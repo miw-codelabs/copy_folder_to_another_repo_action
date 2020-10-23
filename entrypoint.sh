@@ -54,11 +54,12 @@ cd "$CLONE_DIR_DST"
 ls -a
 
 echo "Adding git commit"
-if git status | grep -q "Changes to be committed"
-then
-  git commit --message "$INPUT_COMMIT_MSG"
-  echo "Pushing git commit"
-  git push origin $INPUT_DESTINATION_BRANCH
-else
-  echo "No changes detected"
-fi
+git status
+# if git status | grep -q "Changes to be committed"
+# then
+#   git commit --message "$INPUT_COMMIT_MSG"
+#   echo "Pushing git commit"
+#   git push origin $INPUT_DESTINATION_BRANCH
+# else
+#   echo "No changes detected"
+# fi
