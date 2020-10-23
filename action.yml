@@ -1,9 +1,15 @@
 name: 'Push a folder to another repository'
 description: 'Used for pushing a copy of a folder to another repository'
 inputs:
+  source_repo:
+    description: 'Source repo from the origin directory'
+    required: true
   source_folder:
     description: 'Source folder from the origin directory'
     required: true
+  source_branch:
+    description: 'Source branch from the origin directory'
+    required: false
   destination_repo:
     description: 'Destination repository'
     required: true
@@ -29,6 +35,8 @@ runs:
     - ${{ inputs.source-file }}
     - ${{ inputs.destination-repo }}
     - ${{ inputs.destination-folder }}
+    - ${{ inputs.source-repo }}
+    - ${{ inputs.source-folder }}
     - ${{ inputs.user-email }}
     - ${{ inputs.destination-branch }}
     - ${{ inputs.commit_msg }}
