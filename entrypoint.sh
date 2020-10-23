@@ -53,13 +53,16 @@ echo "switching to destination repo directory: ${CLONE_DIR_DST}"
 cd "$CLONE_DIR_DST"
 ls -a
 
-echo "Adding git commit"
+echo "Git add all to force directories"
+git add .
+echo "Git status"
 git status
-# if git status | grep -q "Changes to be committed"
-# then
-#   git commit --message "$INPUT_COMMIT_MSG"
-#   echo "Pushing git commit"
-#   git push origin $INPUT_DESTINATION_BRANCH
-# else
-#   echo "No changes detected"
-# fi
+echo "Adding git commit if changes detected"
+if git status | grep -q "Changes to be committed"
+then
+  git commit --message "$INPUT_COMMIT_MSG"
+  echo "Pushing git commit"
+  git push origin $INPUT_DESTINATION_BRANCH
+else
+  echo "No changes detected"
+fi
