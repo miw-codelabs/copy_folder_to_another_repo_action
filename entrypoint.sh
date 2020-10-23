@@ -45,11 +45,11 @@ git config --global user.name "$INPUT_USER_NAME"
 git clone --single-branch --branch $INPUT_SOURCE_BRANCH "https://$INPUT_AUTH_TOKEN:x-oauth-basic@github.com/$INPUT_SOURCE_REPO.git" "$CLONE_DIR_SRC"
 git clone --single-branch --branch $INPUT_DESTINATION_BRANCH "https://$INPUT_AUTH_TOKEN:x-oauth-basic@github.com/$INPUT_DESTINATION_REPO.git" "$CLONE_DIR_DST"
 
-echo "Removing old folder: ${$CLONE_DIR_DST/$INPUT_DESTINATION_FOLDER/}"
+echo "Removing old folder: ${CLONE_DIR_DST}/${INPUT_DESTINATION_FOLDER}/"
 rm -rf $CLONE_DIR_DST/$INPUT_DESTINATION_FOLDER/
-echo "Copying: ${$CLONE_DIR_SRC/$INPUT_SOURCE_FOLDER/} -> ${$CLONE_DIR_DST/$INPUT_DESTINATION_FOLDER/}"
+echo "Copying: ${CLONE_DIR_SRC}/${INPUT_SOURCE_FOLDER}/ -> ${CLONE_DIR_DST}/${INPUT_DESTINATION_FOLDER}/"
 cp -a $CLONE_DIR_SRC/$INPUT_SOURCE_FOLDER/. $CLONE_DIR_DST/$INPUT_DESTINATION_FOLDER/
-echo "switchin to destination repo directory: ${$CLONE_DIR_DST}"
+echo "switching to destination repo directory: ${CLONE_DIR_DST}"
 cd "$CLONE_DIR_DST"
 ls -a
 
